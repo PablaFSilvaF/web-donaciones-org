@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Donaciones | Solidarios en Acción</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;line-height:1.5;margin:0;background:#fafafa}
+    .wrap{max-width:720px;margin:2rem auto;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    h1{margin:0 0 1rem}
+    label{display:block;margin:.75rem 0 .25rem}
+    input,button{width:100%;padding:.75rem;border:1px solid #ddd;border-radius:8px}
+    button{margin-top:1rem;border:none;cursor:pointer}
+    .btn{background:#1f6feb;color:#fff}
+    .note{font-size:.9rem;color:#555;margin-top:.5rem}
+    .badge{display:inline-block;background:#f1f8ff;color:#0969da;padding:.25rem .5rem;border-radius:999px;font-size:.8rem;margin-left:.5rem}
+    .alert{background:#fff4e5;border:1px solid #ffd7a1;color:#7a4d00;padding:.75rem;border-radius:8px;margin:1rem 0}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Haz tu donación <span class="badge">MVP</span></h1>
+    <p>Tu aporte financia proyectos, campañas y voluntariados en curso.</p>
+
+    <div class="alert">⚠️ Demo pedagógica: la pasarela real se integra en otro PR.</div>
+
+    <form action="/procesar-donacion" method="POST" onsubmit="return validar()">
+      <label for="monto">Monto (CLP)</label>
+      <input type="number" id="monto" name="monto" min="1000" placeholder="Ej: 5000" required>
+
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+
+      <button type="submit" class="btn">Donar ahora</button>
+      <p class="note">Nunca guardamos tus datos de pago en el servidor.</p>
+    </form>
+  </main>
+  <script>
+    function validar(){
+      const m = document.getElementById('monto').valueAsNumber||0;
+      if(m<1000){ alert('El monto mínimo es $1.000 CLP.'); return false; }
+      return true;
+    }
+  </script>
+</body>
+</html>
